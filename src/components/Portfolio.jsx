@@ -25,7 +25,13 @@ const NeuralNetworkBackground = () => {
       0.1,
       1000
     );
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true });
+    } catch (e) {
+      console.warn("WebGL not supported:", e);
+      return;
+    }
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     container.appendChild(renderer.domElement);
@@ -170,7 +176,13 @@ const HeroScene = () => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(60, el.clientWidth / el.clientHeight, 0.1, 100);
     camera.position.z = 5;
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    } catch (e) {
+      console.warn("WebGL not supported:", e);
+      return;
+    }
     renderer.setSize(el.clientWidth, el.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     el.appendChild(renderer.domElement);
@@ -327,7 +339,13 @@ const RoverHologramVis = () => {
     camera.position.set(18, 12, 24);
     camera.lookAt(0, 0, 0);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    } catch (e) {
+      console.warn("WebGL not supported:", e);
+      return;
+    }
     renderer.setSize(el.clientWidth, el.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     // Set tone mapping for better realistic material rendering
