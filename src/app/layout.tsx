@@ -6,6 +6,7 @@ import FloatingMenu from "@/components/nav/FloatingMenu";
 import BootLoader from "@/components/loader/BootLoader";
 import MagneticCursor from "@/components/cursor/MagneticCursor";
 import TransitionCurtain from "@/components/ui/TransitionCurtain";
+import CaseStudyTransition from "@/components/ui/CaseStudyTransition";
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono", weight: ["400"] });
 const bebasNeue = Bebas_Neue({ subsets: ["latin"], variable: "--font-bebas-neue", weight: ["400"] });
@@ -34,6 +35,7 @@ export default function RootLayout({
         <Navigation />
         <MagneticCursor />
         <FloatingMenu />
+        <CaseStudyTransition />
         {children}
       </body>
     </html>

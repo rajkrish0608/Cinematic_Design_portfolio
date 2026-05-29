@@ -15,6 +15,13 @@
   --color-smoke: #E8E8E8;
   --color-champagne: #D4AF37;
   --color-divider: rgba(255, 255, 255, 0.1);
+
+  --animate-scale-slow: scale-slow 15s ease-out forwards;
+
+  @keyframes scale-slow {
+    0% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
 }
 
 @layer utilities {

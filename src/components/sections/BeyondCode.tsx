@@ -61,9 +61,9 @@ export default function BeyondCode() {
 
   return (
     <section
-      id="beyond"
       ref={sectionRef}
-      className="relative w-full py-32 bg-[#050505] overflow-hidden border-t border-[#C0C0C0]/5"
+      id="beyond-code"
+      className="snap-start relative py-32 bg-[#050505] overflow-hidden border-t border-[#C0C0C0]/10"
     >
       {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[#D4AF37] rounded-full blur-[200px] opacity-[0.02] pointer-events-none" />

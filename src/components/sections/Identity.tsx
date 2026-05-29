@@ -56,7 +56,7 @@ export default function Identity() {
   }, []);
 
   return (
-    <section id="identity" ref={sectionRef} className="relative w-full min-h-screen py-32 bg-[#050505] overflow-hidden">
+    <section id="identity" ref={sectionRef} className="snap-start relative w-full min-h-screen py-32 bg-[#050505] overflow-hidden">
       
       {/* Editorial Number */}
       <div className="absolute top-12 right-12 font-mono text-[#D4AF37] text-xs uppercase tracking-widest opacity-60">

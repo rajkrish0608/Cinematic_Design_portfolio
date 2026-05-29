@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -31,7 +32,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative w-full py-32 bg-[#050505] min-h-screen flex items-center border-t border-[#C0C0C0]/10 overflow-hidden">
+    <section id="contact" className="snap-start relative w-full py-32 bg-[#050505] min-h-screen flex items-center border-t border-[#C0C0C0]/10 overflow-hidden">
       
       {/* Background Soft Glow */}
       <div className="absolute inset-0 z-0">
@@ -115,7 +116,7 @@ export default function Contact() {
                 />
               </div>
 
-              <button 
+              <MagneticButton 
                 type="submit"
                 disabled={isSubmitting || isSent}
                 className={`mt-8 w-full py-5 rounded-full font-mono text-xs uppercase tracking-[0.2em] transition-all duration-500 overflow-hidden relative group ${
@@ -138,7 +139,7 @@ export default function Contact() {
                     </>
                   )}
                 </div>
-              </button>
+              </MagneticButton>
             </form>
           </div>
         </div>

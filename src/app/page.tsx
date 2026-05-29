@@ -3,13 +3,19 @@
 import Hero from "@/components/sections/Hero";
 import Identity from "@/components/sections/Identity";
 import Projects from "@/components/sections/Projects";
-import PhysicsSkills from "@/components/sections/PhysicsSkills";
+import Skills from "@/components/sections/Skills";
 import Timeline from "@/components/sections/Timeline";
 import Awards from "@/components/sections/Awards";
 import BeyondCode from "@/components/sections/BeyondCode";
 import Contact from "@/components/sections/Contact";
 import { useEffect } from "react";
 import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Home() {
   
@@ -22,13 +28,16 @@ export default function Home() {
       touchMultiplier: 2,
     });
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    lenis.on('scroll', ScrollTrigger.update);
+
+    const rafFunction = (time: number) => {
+      lenis.raf(time * 1000);
+    };
+    gsap.ticker.add(rafFunction);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
+      gsap.ticker.remove(rafFunction);
       lenis.destroy();
     };
   }, []);
@@ -38,7 +47,7 @@ export default function Home() {
       <Hero />
       <Identity />
       <Projects />
-      <PhysicsSkills />
+      <Skills />
       <Timeline />
       <Awards />
       <BeyondCode />

@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import SpotlightCard from "@/components/ui/SpotlightCard";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -57,7 +58,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" ref={containerRef} className="relative w-full h-screen flex items-center justify-center pt-24 overflow-hidden bg-[#050505]">
+    <section id="hero" ref={containerRef} className="snap-start relative w-full h-screen flex items-center justify-center pt-24 overflow-hidden bg-[#050505]">
       
       {/* 3D Background */}
       <div className="absolute inset-0 z-0 opacity-50">
@@ -69,7 +70,7 @@ export default function Hero() {
         {/* Left Column: Stats Cards */}
         <div className="hidden lg:flex lg:col-span-3 flex-col gap-4 hero-peripheral opacity-0 mt-12">
           
-          <div className="glass-panel p-4 flex items-center gap-4">
+          <SpotlightCard className="glass-panel p-4 flex items-center gap-4">
             <div className="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-[#C0C0C0]/10 flex items-center justify-center">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
@@ -77,9 +78,9 @@ export default function Hero() {
               <div className="text-[10px] font-mono uppercase tracking-widest text-[#F5F5F0]">AVAILABLE</div>
               <div className="text-xs text-[#8A8A85] flex items-center gap-2">For new projects <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></span></div>
             </div>
-          </div>
+          </SpotlightCard>
 
-          <div className="glass-panel p-4 flex items-center gap-4">
+          <SpotlightCard className="glass-panel p-4 flex items-center gap-4">
             <div className="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-[#C0C0C0]/10 flex items-center justify-center">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" strokeWidth="2"><path d="M12 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM2 22a10 10 0 0 1 20 0"/></svg>
             </div>
@@ -87,9 +88,9 @@ export default function Hero() {
               <div className="text-[10px] font-mono uppercase tracking-widest text-[#F5F5F0]">BASED IN</div>
               <div className="text-xs text-[#8A8A85]">Bengaluru, India</div>
             </div>
-          </div>
+          </SpotlightCard>
 
-          <div className="glass-panel p-4 flex items-center gap-4">
+          <SpotlightCard className="glass-panel p-4 flex items-center gap-4">
             <div className="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-[#C0C0C0]/10 flex items-center justify-center">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" strokeWidth="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
             </div>
@@ -97,9 +98,9 @@ export default function Hero() {
               <div className="text-[10px] font-mono uppercase tracking-widest text-[#F5F5F0]">EXPERIENCE</div>
               <div className="text-xs text-[#8A8A85]">3+ years</div>
             </div>
-          </div>
+          </SpotlightCard>
 
-          <div className="glass-panel p-4 flex items-center gap-4">
+          <SpotlightCard className="glass-panel p-4 flex items-center gap-4">
             <div className="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-[#C0C0C0]/10 flex items-center justify-center">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" strokeWidth="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
             </div>
@@ -107,7 +108,7 @@ export default function Hero() {
               <div className="text-[10px] font-mono uppercase tracking-widest text-[#F5F5F0]">FOCUS</div>
               <div className="text-xs text-[#8A8A85]">Interaction & AI</div>
             </div>
-          </div>
+          </SpotlightCard>
 
         </div>
 

@@ -12,70 +12,71 @@ interface SkillPill {
   title: string;
   color: string;
   isEmoji?: boolean;
+  proficiency: number;
 }
 
 const TABS = [
   {
     label: "Robotics & AI",
     pills: [
-      { title: "ESP32", color: "#FDA872" },
-      { title: "ROS", color: "#8B9FF8" },
-      { title: "TensorFlow", color: "#50A18A" },
-      { title: "Computer Vision", color: "#FC9ECD" },
-      { title: "TinyML", color: "#B9B9B9" },
-      { title: "Arduino", color: "#FDA872" },
-      { title: "LIDAR", color: "#8B9FF8" },
-      { title: "PyTorch", color: "#FC9ECD" },
-      { title: "Raspberry Pi", color: "#50A18A" },
-      { title: "Embedded C", color: "#B9B9B9" },
-      { title: "OpenCV", color: "#FDA872" },
-      { title: "SLAM", color: "#8B9FF8" },
-      { title: "🤖", color: "#50A18A", isEmoji: true },
-      { title: "🔥", color: "#FC9ECD", isEmoji: true },
-      { title: "🧠", color: "#8B9FF8", isEmoji: true },
-      { title: "⚡", color: "#FDA872", isEmoji: true },
-      { title: "🎯", color: "#B9B9B9", isEmoji: true },
+      { title: "ESP32", color: "#FDA872", proficiency: 95 },
+      { title: "ROS", color: "#8B9FF8", proficiency: 85 },
+      { title: "TensorFlow", color: "#50A18A", proficiency: 88 },
+      { title: "Computer Vision", color: "#FC9ECD", proficiency: 92 },
+      { title: "TinyML", color: "#B9B9B9", proficiency: 80 },
+      { title: "Arduino", color: "#FDA872", proficiency: 98 },
+      { title: "LIDAR", color: "#8B9FF8", proficiency: 82 },
+      { title: "PyTorch", color: "#FC9ECD", proficiency: 85 },
+      { title: "Raspberry Pi", color: "#50A18A", proficiency: 90 },
+      { title: "Embedded C", color: "#B9B9B9", proficiency: 94 },
+      { title: "OpenCV", color: "#FDA872", proficiency: 89 },
+      { title: "SLAM", color: "#8B9FF8", proficiency: 78 },
+      { title: "🤖", color: "#50A18A", isEmoji: true, proficiency: 100 },
+      { title: "🔥", color: "#FC9ECD", isEmoji: true, proficiency: 100 },
+      { title: "🧠", color: "#8B9FF8", isEmoji: true, proficiency: 100 },
+      { title: "⚡", color: "#FDA872", isEmoji: true, proficiency: 100 },
+      { title: "🎯", color: "#B9B9B9", isEmoji: true, proficiency: 100 },
     ] as SkillPill[],
   },
   {
     label: "Tech Stacks",
     pills: [
-      { title: "Python", color: "#FDA872" },
-      { title: "C/C++", color: "#8B9FF8" },
-      { title: "React", color: "#50A18A" },
-      { title: "Next.js", color: "#B9B9B9" },
-      { title: "TypeScript", color: "#FC9ECD" },
-      { title: "Node.js", color: "#FDA872" },
-      { title: "Linux", color: "#8B9FF8" },
-      { title: "Docker", color: "#50A18A" },
-      { title: "Firebase", color: "#FC9ECD" },
-      { title: "Git", color: "#B9B9B9" },
-      { title: "MongoDB", color: "#FDA872" },
-      { title: "GSAP", color: "#50A18A" },
-      { title: "Three.js", color: "#FC9ECD" },
-      { title: "🥷🏼", color: "#FDA872", isEmoji: true },
-      { title: "🖥️", color: "#FC9ECD", isEmoji: true },
-      { title: "🧑🏽‍💻", color: "#8B9FF8", isEmoji: true },
+      { title: "Python", color: "#FDA872", proficiency: 96 },
+      { title: "C/C++", color: "#8B9FF8", proficiency: 92 },
+      { title: "React", color: "#50A18A", proficiency: 88 },
+      { title: "Next.js", color: "#B9B9B9", proficiency: 85 },
+      { title: "TypeScript", color: "#FC9ECD", proficiency: 90 },
+      { title: "Node.js", color: "#FDA872", proficiency: 82 },
+      { title: "Linux", color: "#8B9FF8", proficiency: 94 },
+      { title: "Docker", color: "#50A18A", proficiency: 80 },
+      { title: "Firebase", color: "#FC9ECD", proficiency: 85 },
+      { title: "Git", color: "#B9B9B9", proficiency: 95 },
+      { title: "MongoDB", color: "#FDA872", proficiency: 82 },
+      { title: "GSAP", color: "#50A18A", proficiency: 88 },
+      { title: "Three.js", color: "#FC9ECD", proficiency: 78 },
+      { title: "🥷🏼", color: "#FDA872", isEmoji: true, proficiency: 100 },
+      { title: "🖥️", color: "#FC9ECD", isEmoji: true, proficiency: 100 },
+      { title: "🧑🏽‍💻", color: "#8B9FF8", isEmoji: true, proficiency: 100 },
     ] as SkillPill[],
   },
   {
     label: "What I Build",
     pills: [
-      { title: "Battlefield Wearables", color: "#FDA872" },
-      { title: "Health Systems", color: "#8B9FF8" },
-      { title: "Autonomous Rovers", color: "#50A18A" },
-      { title: "IoT Platforms", color: "#FC9ECD" },
-      { title: "AI Pipelines", color: "#B9B9B9" },
-      { title: "Research Papers", color: "#FDA872" },
-      { title: "Emergency Systems", color: "#FC9ECD" },
-      { title: "Edge Computing", color: "#50A18A" },
-      { title: "Offline-first Apps", color: "#8B9FF8" },
-      { title: "Sensor Networks", color: "#B9B9B9" },
-      { title: "🚀", color: "#FC9ECD", isEmoji: true },
-      { title: "🎖️", color: "#8B9FF8", isEmoji: true },
-      { title: "✨", color: "#FC9ECD", isEmoji: true },
-      { title: "🔬", color: "#50A18A", isEmoji: true },
-      { title: "🛡️", color: "#FDA872", isEmoji: true },
+      { title: "Battlefield Wearables", color: "#FDA872", proficiency: 95 },
+      { title: "Health Systems", color: "#8B9FF8", proficiency: 90 },
+      { title: "Autonomous Rovers", color: "#50A18A", proficiency: 88 },
+      { title: "IoT Platforms", color: "#FC9ECD", proficiency: 92 },
+      { title: "AI Pipelines", color: "#B9B9B9", proficiency: 85 },
+      { title: "Research Papers", color: "#FDA872", proficiency: 80 },
+      { title: "Emergency Systems", color: "#FC9ECD", proficiency: 85 },
+      { title: "Edge Computing", color: "#50A18A", proficiency: 92 },
+      { title: "Offline-first Apps", color: "#8B9FF8", proficiency: 88 },
+      { title: "Sensor Networks", color: "#B9B9B9", proficiency: 94 },
+      { title: "🚀", color: "#FC9ECD", isEmoji: true, proficiency: 100 },
+      { title: "🎖️", color: "#8B9FF8", isEmoji: true, proficiency: 100 },
+      { title: "✨", color: "#FC9ECD", isEmoji: true, proficiency: 100 },
+      { title: "🔬", color: "#50A18A", isEmoji: true, proficiency: 100 },
+      { title: "🛡️", color: "#FDA872", isEmoji: true, proficiency: 100 },
     ] as SkillPill[],
   },
 ];
@@ -172,6 +173,7 @@ export default function PhysicsSkills() {
 
         // DOM element
         const el = document.createElement("div");
+        el.className = "group physics-pill";
         el.style.cssText = `
           position:absolute;left:0;top:0;
           width:${pillW}px;height:${pillH}px;
@@ -181,14 +183,39 @@ export default function PhysicsSkills() {
           font-size:${pill.isEmoji ? "22px" : "13px"};
           font-weight:600;color:#111;
           cursor:grab;user-select:none;
-          pointer-events:none;
+          pointer-events:auto;
           white-space:nowrap;
           box-shadow:0 2px 12px rgba(0,0,0,0.18);
           will-change:transform;
           opacity:0;
           transform-origin:center center;
         `;
-        el.textContent = pill.title;
+        
+        // Add the title
+        const titleSpan = document.createElement("span");
+        titleSpan.textContent = pill.title;
+        titleSpan.style.pointerEvents = "none";
+        el.appendChild(titleSpan);
+
+        // Add hover tooltip for proficiency if it's not an emoji
+        if (!pill.isEmoji) {
+          const tooltip = document.createElement("div");
+          tooltip.className = "absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-32 p-3 bg-[#050505] rounded-xl opacity-0 translate-y-2 pointer-events-none transition-all duration-300 z-50 group-hover:opacity-100 group-hover:translate-y-0";
+          tooltip.style.boxShadow = "0 10px 25px rgba(0,0,0,0.3)";
+          
+          tooltip.innerHTML = `
+            <div class="absolute -bottom-[6px] left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-[#050505]"></div>
+            <div class="flex justify-between items-center mb-2 relative z-10">
+              <span class="font-mono text-[9px] uppercase tracking-widest text-[#8A8A85]">Mastery</span>
+              <span class="font-mono text-[10px] text-[#D4AF37] font-bold">${pill.proficiency}%</span>
+            </div>
+            <div class="w-full h-[2px] bg-[#1A1A1A] rounded-full overflow-hidden relative z-10">
+              <div class="h-full bg-[#D4AF37]" style="width: ${pill.proficiency}%"></div>
+            </div>
+          `;
+          
+          el.appendChild(tooltip);
+        }
         container.appendChild(el);
         pillElementsRef.current.push(el);
 
@@ -332,6 +359,7 @@ export default function PhysicsSkills() {
     <section
       id="skills"
       ref={sectionRef}
+      className="snap-start"
       style={{
         position: "relative",
         width: "100%",
@@ -345,7 +373,7 @@ export default function PhysicsSkills() {
       {/* Header */}
       <div style={{ padding: "48px 48px 0", flexShrink: 0 }}>
         <div style={{ fontFamily: "var(--font-mono,'JetBrains Mono',monospace)", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#1a1a1a", opacity: 0.5, marginBottom: "8px" }}>
-          MY SKILLS
+          THE ARSENAL
         </div>
 
         {/* Tabs */}

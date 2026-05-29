@@ -63,7 +63,7 @@ export default function Awards() {
   }, []);
 
   return (
-    <section id="awards" ref={sectionRef} className="relative w-full py-32 bg-[#050505] overflow-hidden border-t border-[#C0C0C0]/10">
+    <section id="awards" ref={sectionRef} className="snap-start relative w-full py-32 bg-[#050505] overflow-hidden border-t border-[#C0C0C0]/10">
       
       <div className="absolute top-12 right-12 font-mono text-[#D4AF37] text-xs uppercase tracking-widest opacity-60">
         Chapter 03.2 // Validation

@@ -17,7 +17,7 @@ const PROJECTS = [
     description: 'An early-stage Alzheimer detection system leveraging neural networks to analyze medical imaging data with clinical-grade accuracy.',
     themeColor: '#0a1628',
     accentColor: '#1e3a5f',
-    url: 'https://github.com/rajkrish0608',
+    image: '/lumina.png',
   },
   {
     id: 2, num: '02',
@@ -27,7 +27,7 @@ const PROJECTS = [
     description: 'Battlefield-ready AI wearable for real-time threat detection, biometric monitoring and soldier situational awareness.',
     themeColor: '#0d1117',
     accentColor: '#161b22',
-    url: 'https://github.com/rajkrish0608',
+    image: '/nexora.png',
   },
   {
     id: 3, num: '03',
@@ -37,7 +37,7 @@ const PROJECTS = [
     description: 'A self-driving rover built with ROS and computer vision for navigating unstructured outdoor terrain with full autonomy.',
     themeColor: '#0f0a1a',
     accentColor: '#1a0f2e',
-    url: 'https://github.com/rajkrish0608',
+    image: '/horizon.png',
   },
 ];
 
@@ -69,24 +69,6 @@ export default function Projects() {
         },
       });
 
-      // Stacked cards scale/darken effect
-      const wrappers = gsap.utils.toArray<HTMLElement>('.project-card-wrapper');
-      wrappers.forEach((wrapper, i) => {
-        const inner = wrapper.querySelector('.project-card-inner');
-        if (!inner || i === wrappers.length - 1) return; // Last card doesn't shrink
-        
-        gsap.to(inner, {
-          scale: 0.92,
-          filter: 'brightness(0.5)',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: wrapper,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-          }
-        });
-      });
     }, sectionRef);
 
     return () => { ctx.revert(); };
@@ -262,10 +244,13 @@ export default function Projects() {
                     marginBottom: '28px',
                     fontFamily: 'Satoshi, sans-serif',
                   }}>{project.description}</p>
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => {
+                      const event = new CustomEvent('trigger-case-study', {
+                        detail: { id: project.title.toLowerCase(), imageUrl: project.image }
+                      });
+                      window.dispatchEvent(event);
+                    }}
                     style={{
                       display: 'inline-flex', alignItems: 'center', gap: '8px',
                       padding: '10px 20px',
@@ -278,21 +263,39 @@ export default function Projects() {
                       textDecoration: 'none',
                       textTransform: 'uppercase',
                       transition: 'all 0.3s ease',
+                      cursor: 'pointer',
                     }}
                     onMouseEnter={e => {
-                      const el = e.currentTarget as HTMLAnchorElement;
+                      const el = e.currentTarget as HTMLButtonElement;
                       el.style.background = 'rgba(212,175,55,0.1)';
                       el.style.borderColor = 'rgba(212,175,55,0.4)';
                     }}
                     onMouseLeave={e => {
-                      const el = e.currentTarget as HTMLAnchorElement;
+                      const el = e.currentTarget as HTMLButtonElement;
                       el.style.background = 'transparent';
                       el.style.borderColor = 'rgba(255,255,255,0.2)';
                     }}
                   >
-                    ( VISIT GITHUB ↗ )
-                  </a>
+                    ( DECONSTRUCT ↗ )
+                  </button>
                 </div>
+              </div>
+
+              {/* Project Image on Right */}
+              <div style={{
+                position: 'absolute', right: '5%', top: '50%', transform: 'translateY(-50%)',
+                width: '45%', height: '70%',
+                borderRadius: '16px', overflow: 'hidden',
+                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
+              }}>
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  style={{
+                    width: '100%', height: '100%', objectFit: 'cover',
+                    filter: 'grayscale(0.2) contrast(1.1)',
+                  }}
+                />
               </div>
 
               {/* Decorative project number - large behind */}
@@ -306,6 +309,7 @@ export default function Projects() {
                 userSelect: 'none',
                 pointerEvents: 'none',
                 fontFamily: "'Bebas Neue', display",
+                zIndex: 0,
               }}>
                 {String(i + 1).padStart(2, '0')}
               </div>
