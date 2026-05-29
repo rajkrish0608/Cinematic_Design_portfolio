@@ -54,20 +54,42 @@ export default function Projects() {
   useEffect(() => {
     if (!sectionRef.current || !stackRef.current) return;
 
-    const st = ScrollTrigger.create({
-      trigger: stackRef.current,
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: 1,
-      onUpdate: (self) => {
-        const p = self.progress;
-        setDashOffset(CIRCUMFERENCE * (1 - p));
-        const idx = Math.min(Math.floor(p * TOTAL), TOTAL - 1);
-        setActiveIdx(idx);
-      },
-    });
+    const ctx = gsap.context(() => {
+      // Circle progress
+      ScrollTrigger.create({
+        trigger: stackRef.current,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 1,
+        onUpdate: (self) => {
+          const p = self.progress;
+          setDashOffset(CIRCUMFERENCE * (1 - p));
+          const idx = Math.min(Math.floor(p * TOTAL), TOTAL - 1);
+          setActiveIdx(idx);
+        },
+      });
 
-    return () => { st.kill(); };
+      // Stacked cards scale/darken effect
+      const wrappers = gsap.utils.toArray<HTMLElement>('.project-card-wrapper');
+      wrappers.forEach((wrapper, i) => {
+        const inner = wrapper.querySelector('.project-card-inner');
+        if (!inner || i === wrappers.length - 1) return; // Last card doesn't shrink
+        
+        gsap.to(inner, {
+          scale: 0.92,
+          filter: 'brightness(0.5)',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: wrapper,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          }
+        });
+      });
+    }, sectionRef);
+
+    return () => { ctx.revert(); };
   }, []);
 
   return (
@@ -161,13 +183,17 @@ export default function Projects() {
         {PROJECTS.map((project, i) => (
           <div
             key={project.id}
+            className="project-card-wrapper"
             style={{ height: '150vh', position: 'relative' }}
           >
-            <div style={{
-              position: 'sticky', top: 0,
-              height: '100vh', overflow: 'hidden',
-              borderRadius: '32px', margin: '8px',
-            }}>
+            <div 
+              className="project-card-inner"
+              style={{
+                position: 'sticky', top: 0,
+                height: '100vh', overflow: 'hidden',
+                borderRadius: '32px', margin: '8px',
+                transformOrigin: 'top center',
+              }}>
               {/* Background */}
               <div style={{
                 position: 'absolute', inset: 0,
