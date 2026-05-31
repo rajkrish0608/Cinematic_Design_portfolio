@@ -128,15 +128,11 @@ export default function FragmentImage({ imageUrl, progress }: FragmentImageProps
       <bufferGeometry>
         <bufferAttribute 
           attach="attributes-position" 
-          count={positions.length / 3} 
-          array={positions} 
-          itemSize={3} 
+          args={[positions, 3]} 
         />
         <bufferAttribute 
           attach="attributes-uv" 
-          count={uvs.length / 2} 
-          array={uvs} 
-          itemSize={2} 
+          args={[uvs, 2]} 
         />
       </bufferGeometry>
       <shaderMaterial 

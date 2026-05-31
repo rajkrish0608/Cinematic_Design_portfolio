@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Matter from "matter-js";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -89,12 +90,6 @@ export default function PhysicsSkills() {
   const pillElementsRef = useRef<HTMLDivElement[]>([]);
   const bodiesRef = useRef<unknown[]>([]);
   const [activeTab, setActiveTab] = useState(0);
-  const [Matter, setMatter] = useState<typeof import("matter-js") | null>(null);
-
-  // Load Matter.js client-side only
-  useEffect(() => {
-    import("matter-js").then((m) => setMatter(m.default || m as typeof import("matter-js")));
-  }, []);
 
   const measurePillWidth = useCallback((text: string, isEmoji?: boolean): number => {
     if (isEmoji) return 60;
@@ -104,8 +99,7 @@ export default function PhysicsSkills() {
 
   const initPhysics = useCallback(
     (tabIndex: number) => {
-      if (!Matter) return;
-      const container = canvasRef.current;
+      const container = canvasRef.current as HTMLDivElement;
       if (!container) return;
 
       // Stop previous loop
@@ -325,11 +319,10 @@ export default function PhysicsSkills() {
 
       renderLoopRef.current = requestAnimationFrame(loop);
     },
-    [Matter, measurePillWidth]
+    [measurePillWidth]
   );
 
   useEffect(() => {
-    if (!Matter) return;
     initPhysics(activeTab);
 
     return () => {
@@ -345,16 +338,15 @@ export default function PhysicsSkills() {
       pillElementsRef.current = [];
       bodiesRef.current = [];
     };
-  }, [activeTab, initPhysics, Matter]);
+  }, [activeTab, initPhysics]);
 
   // Resize
   useEffect(() => {
-    if (!Matter) return;
     let t: NodeJS.Timeout;
     const onResize = () => { clearTimeout(t); t = setTimeout(() => initPhysics(activeTab), 300); };
     window.addEventListener("resize", onResize);
     return () => { window.removeEventListener("resize", onResize); clearTimeout(t); };
-  }, [activeTab, initPhysics, Matter]);
+  }, [activeTab, initPhysics]);
 
   return (
     <section
