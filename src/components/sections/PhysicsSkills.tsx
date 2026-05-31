@@ -232,6 +232,7 @@ export default function PhysicsSkills() {
       const dragConstraintRef: { c: import("matter-js").Constraint | null } = { c: null };
 
       function getRelPos(e: MouseEvent | TouchEvent) {
+        if (!container) return { x: 0, y: 0 };
         const rect = container.getBoundingClientRect();
         const clientX = "touches" in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
         const clientY = "touches" in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
